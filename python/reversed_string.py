@@ -8,4 +8,4 @@ def solution(string):
 
 
 def solution(string):
-    return [::-1]
+    return string[::-1]
