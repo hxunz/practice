@@ -10,3 +10,8 @@ byme.sign()
 # sns 주소
 # Youtube :  https://www.youtube.com/channel/UCa7OsVbHMN_ZZuesPxg1AVQ
 # Instagram : https://www.instagram.com/hxunzee/
+
+for text in string:
+  if text in m:
+    r += string[m]
+    print()
