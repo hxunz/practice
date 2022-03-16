@@ -1,9 +1,19 @@
 // https://www.codewars.com/kata/54ba84be607a92aa900000f1/train/javascript
 
 function isIsogram(str){
-  const words = [];	
+  if (str.length === 0) {
+    return true;
+  }
 
-  for (let i = 97; i <= 122; i++) {    
-    words += String.fromCharCode(i);
-}
+  const words = [...str.toLowerCase()];
+
+  for (let i = 0; i < words.length - 1; i++) {
+    for (let j = i + 1; j < words.length; j++) {
+      if (words[i] === words[j]) {
+        return false;
+      }
+    }
+  }
+
+  return true;
 }
