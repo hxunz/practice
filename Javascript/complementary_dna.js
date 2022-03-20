@@ -16,6 +16,5 @@ function DNAStrand(dna) {
     else 
       return 'C'
   })
-  console.log(result.join(''));
   return result.join('');
 }
