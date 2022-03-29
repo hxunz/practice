@@ -10,12 +10,10 @@ function findOdd(A) {
     return allNum;
   }, {});
   
-  let num = '';
   let orderNum = '';
   
   for (i=0; i < Object.values(number).length; i++) {
     if (Object.values(number)[i] % 2 === 1) {
-      num += Object.values(number)[i];
       orderNum += i;
     }
   }
