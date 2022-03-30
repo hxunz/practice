@@ -2,14 +2,13 @@
 
 function spinWords(string){
   const str = string.split(' ');
-  let result = '';
   
   for (i=0; i < str.length; i++) {
     if (str[i].length >= 5) {
-      result += str[i].split('').reverse().join('');
+      str[i] = str[i].split('').reverse().join('');
     }else {
-      result += str[i];
+      str[i];
     }
   }
-  return result;
+  return str.join(' ')
 }
