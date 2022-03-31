@@ -5,10 +5,5 @@ function digital_root(n) {
   n.toString().split('').map(str => {
     sum += Number(str);
   });
-
-  if (sum < 10) {
-    return sum;
-  } else {
-    return digital_root(sum);
-  }
+  return (sum < 10) ? sum : digital_root(sum);
 }
