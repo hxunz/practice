@@ -2,7 +2,7 @@
 
 function duplicateCount(text){
   const arrText = [...text];
-  const lowerText = arrText.map(num => num.toLowerCase());
+  const lowerText = arrText.map(str => str.toLowerCase());
   
   let countNum = lowerText.reduce(function (allNumbers, number) {
     if (number in allNumbers) {
