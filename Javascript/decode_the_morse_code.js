@@ -3,7 +3,6 @@
 decodeMorse = function (morseCode) {
   const code = morseCode.split("   ");
   const alphabet = code.map(word => word.split(' ').map(w => MORSE_CODE[w]).join(''));
-  const words = alphabet.join(' ').trim();
   
-  return words.toUpperCase();
+  return alphabet.join(' ').trim();
 }
