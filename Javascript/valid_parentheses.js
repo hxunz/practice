@@ -2,18 +2,21 @@
 
 function validParentheses(parens) {
   const paren = parens.split('');
-  console.log(paren);
-  let map = {
-    '(' : ')',
-    '[' : ']',
-    '{' : '}'
+  let count = 0;
+  
+  if (paren[0] === ')' || paren[paren.length-1] === '(' || paren.length%2 === 1) {
+    return false;
   }
-  let stack = [];
   
   for (i=0; i < paren.length; i++) {
-    if (paren[i] === '(' || paren[i] === '[' || paren[i] === '{') {
-      stack.push(paren[i]);
+    if (paren[i] === '(') {
+      count += 1;
+    } else {
+      count -= 1;
+    } 
+    if (count < 0) {
+      return false;
     }
   }
-
+  return count === 0;
 }
