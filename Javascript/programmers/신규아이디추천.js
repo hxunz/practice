@@ -22,7 +22,6 @@
 // 4. 회고
 
 function solution(new_id) {
-  const originLength = new_id.length;
     let result = new_id
             .toLowerCase()
             .replace(/[^\w\-_.]/g, '')
