@@ -22,5 +22,21 @@
 // 4. 회고
 
 function solution(new_id) {
-
+  const originLength = new_id.length;
+    let result = new_id
+            .toLowerCase()
+            .replace(/[^\w\-_.]/g, '')
+            .replace(/\.{2,}/g, '.')
+            .replace(/^\.|\.$/g, '');
+    if (result.length >= 16) {
+        result = result.slice(0, 15).replace(/\.$/, '');
+    }
+    if (result === '') {
+        return 'aaa';
+    }
+    if (result.length <= 2) {
+        return result + result[result.length -1].repeat(3 - result.length)
+    }
+    
+    return result;
 }
