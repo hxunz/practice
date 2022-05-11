@@ -3,8 +3,6 @@
 // 영단어를 숫자로 변경한다.
 // 리턴 값은 숫자여야함
 
-const { fireEvent } = require("@testing-library/react");
-
 //2. 계획
 // 전부다 숫자면 그대로 리턴 -> 숫자인지 어케 알지,,?
 // 숫자만 제외 -> 숫자인지 어케 알지,,? typeof가 string임 ㅜ 
