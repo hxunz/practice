@@ -10,14 +10,9 @@
 // signs가 false면 음수
 // 이렇게 판별한 값들을 더해준다.
 
-function solution(absolutes, signs) {
-  let result = 0;
-
-  for (i = 0; i < absolutes.length; i++) {
-    if (signs[i] === true) {
-      result += absolutes[i];
-    } else {
-    result += absolutes[i] * -1;
-    }
-  }
+export function solution(absolutes, signs) {
+  return absolutes.reduce(
+    (prev, curr, index) => prev + curr * (signs[index] === true ? 1 : -1),
+    0
+  );
 }
