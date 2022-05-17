@@ -10,9 +10,15 @@
 // signs가 false면 음수
 // 이렇게 판별한 값들을 더해준다.
 
-export function solution(absolutes, signs) {
+function solution(absolutes, signs) {
   return absolutes.reduce(
     (prev, curr, index) => prev + curr * (signs[index] === true ? 1 : -1),
     0
   );
 }
+
+test('음양더하기', () => {
+  const absolutes = [4, 7, 12];
+  const signs = [true, false, true];
+  expect(solution(absolutes, signs)).toBe(9);
+});
