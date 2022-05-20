@@ -28,15 +28,16 @@ function solution(nums) {
 
 const findPrime = (arrNumber) => {
   //배열을 돌면서 자기 자신과 나눴을때 몫이 1인경우
-  let result = [];
+  // let result = [];
 
-  for (i = 1; i < arrNumber.length; i++) {
-    if (Number.isInteger(Math.sqrt(arrNumber[i])) === false) {
-      result += arrNumber[i];
-    }
-  }
-  
-  return result.length;
+  // for (i = 1; i < arrNumber.length; i++) {
+  //   if (Number.isInteger(Math.sqrt(arrNumber[i])) === false) {
+  //     result += arrNumber[i];
+  //   }
+  // }
+
+  // return result.length;
+  return arrNumber.filter(x => Number.isInteger(Math.sqrt(x)) === false).length;
 }
 
 test('소수찾기', () => {
