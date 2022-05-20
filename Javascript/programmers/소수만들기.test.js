@@ -19,13 +19,12 @@ const findPrime = (arrNumber) => {
   // let result = [];
 
   // for (i = 1; i < arrNumber.length; i++) {
-  //   if (Number.isInteger(Math.sqrt(arrNumber[i])) === false) {
+  //   if (Number.isInteger(Math.sqrt(arrNumber[i])) === true && arrNumber[i] % i === 0) {
   //     result += arrNumber[i];
-  //   }
+  //   } 
   // }
-
   // return result.length;
-  return arrNumber.filter(x => Number.isInteger(Math.sqrt(x)) === false).length;
+  return arrNumber.filter(x => Number.isInteger(Math.sqrt(x)) === true && x % 1 === 0).length;
 };
 
 function solution(nums) {
@@ -38,14 +37,22 @@ function solution(nums) {
       }
     }
   }
-  
-  return number;
+
+  return findPrime(number.split(''));
+  // const number = nums.map((num, index) => );
+  // console.log(number);
+  // return number;
 };
 
 // test('소수찾기', () => {
-//   expect(findPrime([1,2,3,4])).toBe(2);
+//   // expect(findPrime([1, 2, 3, 4])).toBe(2);
+//   expect(findPrime([6, 7, 8, 9])).toBe(1);
 // })
 
-test('세개의 숫자 더하기', () => {
-  expect(solution([1, 2, 3, 4])).toBe('6789');
+// test('세개의 숫자 더하기', () => {
+//   expect(solution([1, 2, 3, 4])).toBe('6789');
+// })
+
+test('세개의 숫자 더한값 담은 배열에서 소수찾기', () => {
+  expect(solution([1, 2, 3, 4])).toBe(1);
 })
