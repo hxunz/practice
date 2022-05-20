@@ -14,18 +14,6 @@
 // 2-4. 소수 만드는 함수를 사용해서 소수를 찾아서 빈 배열에 담는다.
 // 2-5. 이 배열의 길이를 구한다.
 
-function solution(nums) {
-  // let number = [];
-
-  // for (i = 0; i < nums.length; i++) {
-  //   for (j = i+1; j < nums.length; j++) {
-  //     for (k = j+1; k < nums.length; k++) {
-  //       number = nums[i] + nums[j] + nums[k];
-  //     }
-  //   }
-  // }
-};
-
 const findPrime = (arrNumber) => {
   //배열을 돌면서 자기 자신과 나눴을때 몫이 1인경우
   // let result = [];
@@ -38,12 +26,26 @@ const findPrime = (arrNumber) => {
 
   // return result.length;
   return arrNumber.filter(x => Number.isInteger(Math.sqrt(x)) === false).length;
-}
+};
 
-test('소수찾기', () => {
-  expect(findPrime([1,2,3,4,5])).toBe(3);
-})
+function solution(nums) {
+  let number = '';
 
-// test('primeNumber', () => {
-//   expect(solution([1, 2, 3, 4])).toBe(1);
+  for (i = 0; i < nums.length; i++) {
+    for (j = i+1; j < nums.length; j++) {
+      for (k = j+1; k < nums.length; k++) {
+        number += nums[i] + nums[j] + nums[k];
+      }
+    }
+  }
+  
+  return number;
+};
+
+// test('소수찾기', () => {
+//   expect(findPrime([1,2,3,4])).toBe(2);
 // })
+
+test('세개의 숫자 더하기', () => {
+  expect(solution([1, 2, 3, 4])).toBe('6789');
+})
