@@ -14,34 +14,25 @@
 // 2-4. 소수 만드는 함수를 사용해서 소수를 찾아서 빈 배열에 담는다.
 // 2-5. 이 배열의 길이를 구한다.
 
-const findPrime = (arrNumber) => {
-  //배열을 돌면서 자기 자신과 나눴을때 몫이 1인경우
-  // let result = [];
-
-  // for (i = 1; i < arrNumber.length; i++) {
-  //   if (Number.isInteger(Math.sqrt(arrNumber[i])) === true && arrNumber[i] % i === 0) {
-  //     result += arrNumber[i];
-  //   } 
-  // }
-  // return result.length;
-  return arrNumber.filter(x => Number.isInteger(Math.sqrt(x)) === true && x % 1 === 0).length;
-};
+  
+// const findPrime = (arrNumber) => {
+    
+//   return arrNumber.filter(x => Number.isInteger(Math.sqrt(x)) === true).length;
+// };
 
 function solution(nums) {
-  let number = '';
+  let result = 0;
+  let number = [];
 
-  for (i = 0; i < nums.length; i++) {
-    for (j = i+1; j < nums.length; j++) {
+  for (i = 0; i < nums.length-2; i++) {
+    for (j = i+1; j < nums.length-1; j++) {
       for (k = j+1; k < nums.length; k++) {
         number += nums[i] + nums[j] + nums[k];
       }
     }
   }
-
-  return findPrime(number.split(''));
-  // const number = nums.map((num, index) => );
-  // console.log(number);
-  // return number;
+  console.log(number);
+  // return findPrime(number);
 };
 
 // test('소수찾기', () => {
@@ -55,4 +46,5 @@ function solution(nums) {
 
 test('세개의 숫자 더한값 담은 배열에서 소수찾기', () => {
   expect(solution([1, 2, 3, 4])).toBe(1);
+  expect(solution([1, 2, 7, 6, 4])).toBe(4);
 })
