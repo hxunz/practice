@@ -17,34 +17,37 @@
 // 2부터 n의 제곱근을 한 수만큼만 나눠봐도 된다
 
   
-// const findPrime = (arrNumber) => {
-    
-//   return arrNumber.filter(x => Number.isInteger(Math.sqrt(x)) === true).length;
-// };
+const findPrime = (numbers) => {
+  //2부터제곱근까지 나누기
+    //나머지가 0이면
+    //카운트1
+    let primeCount = 0;
+  for (i = 0; i < numbers.length; i++) {
+    let isNotPrime = false;
+      for (j = 2; j <= Math.floor(Math.sqrt(numbers[i])); j++) {
+        if (numbers[i] % j === 0) {
+          isNotPrime = true;
+        } 
+      }
+    if (isNotPrime === false) {
+      primeCount += 1;
+    }
+    }
+    return primeCount;
+};
 
 function solution(nums) {
-  let result = 0;
-  let number = [];
+    let numbers = [];
 
-  for (i = 0; i < nums.length-2; i++) {
-    for (j = i+1; j < nums.length-1; j++) {
+  for (i = 0; i < nums.length; i++) {
+    for (j = i+1; j < nums.length; j++) {
       for (k = j+1; k < nums.length; k++) {
-        number += nums[i] + nums[j] + nums[k];
+        numbers = [...numbers,nums[i] + nums[j] + nums[k]];
       }
     }
   }
-  console.log(number);
-  // return findPrime(number);
+  return findPrime(numbers);
 };
-
-// test('소수찾기', () => {
-//   // expect(findPrime([1, 2, 3, 4])).toBe(2);
-//   expect(findPrime([6, 7, 8, 9])).toBe(1);
-// })
-
-// test('세개의 숫자 더하기', () => {
-//   expect(solution([1, 2, 3, 4])).toBe('6789');
-// })
 
 test('세개의 숫자 더한값 담은 배열에서 소수찾기', () => {
   expect(solution([1, 2, 3, 4])).toBe(1);
