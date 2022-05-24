@@ -28,7 +28,7 @@
 
 // 참가자 명단에서, 완주한 명단을 뺀다
 // 
-//   참가자 배열에서 그리고 완주한 명단에서 찾아서 뺀다.
+// 참가자 배열에서 그리고 완주한 명단에서 찾아서 뺀다.
 // 참가자 명단에 남은 선수의 이름을 반환한다.
 
 // 3. 실행
@@ -39,16 +39,11 @@
 // 결과나 방법을 어떤 다른 문제에 활용할 수 있는가?
 // 어떻게 하면 더 효율적으로 문제를 해결할 수 있는가?
 // 어떻게 하면 더 효과적으로 문제를 해결할 수 있는가?
-
-// function solution(participant, completion) {
-//     const difference = participant.filter(e => !completion.includes(e));
-//     return difference.join('');
-// }
     
 const findIncompletion = (participants, completions) => {
-    if (completions.length === 0) {
-        return participants[0];
-    }
+    // if (completions.length === 0) {
+    //     return participants[0];
+    // }
 
     // const person = completions[0];
     // const index = participants.findIndex((it) => it === person);
@@ -57,11 +52,11 @@ const findIncompletion = (participants, completions) => {
     //     [...participants.slice(0, index), ...participants.slice(index + 1)],
     //     completions.slice(1)
     // )
-    let result = [];
+    let result = participants;
 
     for (i = 0; i < completions.length; i++) {
-        const personIndex = participants.findIndex(participant => participant === completions[i]);
-        result = [...participants.slice(0, personIndex), ...participants.slice(personIndex + 1)];
+        const personIndex = result.findIndex(participant => participant === completions[i]);
+        result = [...result.slice(0, personIndex), ...result.slice(personIndex + 1)];
     }
     return result[0];
 }
@@ -80,5 +75,7 @@ test('findIncompletion', () => {
     expect(findIncompletion(['c', 'a'], ['c'])).toBe('a');
     expect(findIncompletion(['c', 'a', 'b'], ['b', 'c'])).toBe('a');
     expect(findIncompletion(['c', 'a', 'a'], ['a', 'c'])).toBe('a');
+    expect(findIncompletion(["leo", "kiki", "eden"], ["eden", "kiki"])).toBe('leo');
+    expect(findIncompletion(["marina", "josipa", "nikola", "vinko", "filipa"], ["josipa", "filipa", "marina", "nikola"])).toBe('vinko');
 });
 
