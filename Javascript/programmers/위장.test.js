@@ -6,15 +6,12 @@
 // - 스파이의 의상이 담긴 2차원 배열 clothes
 
 // 조건은 무엇인가?
-// - 다음날 입을 옷이 겹치면 안된다.
 // - 옷을 입을 때 의상 종류가 겹치면 안된다.
 // - 최소 옷 하나는 입어야댐,,
 
 // 우리가 문제를 풀기 위해 주어진 자료가 충분한가?
 // 숨겨진 조건이나 자료가 있는가? 그렇다면 그 것을 다른 방법으로 해석해보라.
 // - 같은 이름을 가진 옷은 없다.
-// - 배열 내 배열의 길이는 무조건 2
-// -  인덱스0은 의상이름, 인덱스1은 의상종류
 
 // 2. 계획
 // 전에 비슷한 문제를 알고 있는가?
@@ -36,25 +33,7 @@
 // 어떻게 하면 더 효율적으로 문제를 해결할 수 있는가?
 // 어떻게 하면 더 효과적으로 문제를 해결할 수 있는가?
 
-const solution = (clothes) => {
-    //2차원 배열을 의상종류를 기준으로해서 객체로 나타내자
-    const objClothes = clothes.reduce((prev, row) => {
-        const [clothe, kind] = row;
-        prev[kind] = [...(prev[kind] || []), clothe];
-        return prev;
-    }, {});
-    
-    //객체 키가 하나일때는 그냥 바로 value 길이를 리턴
-    if (Object.keys(objClothes).length === 1) {
-        return Object.values(objClothes)[0].length;
-    }
-
-    //(a+1)(b+1)(c+1)
-    //abc + ab + bc+ ac + a+ b+ c+1
-    const result = Object.values(objClothes).reduce((acc, curr) => (curr.length+1)*acc, 1);
-    
-    return result - 1;
-}
+프로젝트
 
 
 
