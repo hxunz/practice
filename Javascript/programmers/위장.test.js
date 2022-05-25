@@ -33,7 +33,25 @@
 // 어떻게 하면 더 효율적으로 문제를 해결할 수 있는가?
 // 어떻게 하면 더 효과적으로 문제를 해결할 수 있는가?
 
-프로젝트
+const solution = (clothes) => {
+    //2차원 배열을 의상종류를 기준으로해서 객체로 나타내자
+    const objClothes = clothes.reduce((prev, row) => {
+        const [clothe, kind] = row;
+        prev[kind] = [...(prev[kind] || []), clothe];
+        return prev;
+    }, {});
+    
+    //객체 키가 하나일때는 그냥 바로 value 길이를 리턴
+    if (Object.keys(objClothes).length === 1) {
+        return Object.values(objClothes)[0].length;
+    }
+
+    //(a+1)(b+1)(c+1)
+    //abc + ab + bc+ ac + a+ b+ c+1
+    const result = Object.values(objClothes).reduce((acc, curr) => (curr.length + 1) * acc, 1);
+    
+    return result - 1;
+};
 
 
 
