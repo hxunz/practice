@@ -63,24 +63,34 @@ const solution = (answers) => {
 };
 
 const finalSolution = (score) => {
+  const topScore = Math.max(...score);
   let winner = [];
 
-  if (score[0] > score[1]) {
-    winner = [1];
-  } else if (score[0] === score[1]) {
-    winner = [1, 2];
-  } else {
-    winner = [2];
-  };
+  score.forEach((num, index) => {
+    if (num === topScore) winner.push(index + 1);
+  })
+  return winner;
+};
 
-  if (score[winner[0]-1] > score[2]) {
-    return winner;
-  } else if (score[winner[0]-1] === score[2]) {
-    return[...winner, 3];
-  } else {
-    return [3];
-  };
-}
+// const finalSolution = (score) => {
+//   let winner = [];
+
+//   if (score[0] > score[1]) {
+//     winner = [1];
+//   } else if (score[0] === score[1]) {
+//     winner = [1, 2];
+//   } else {
+//     winner = [2];
+//   };
+
+//   if (score[winner[0]-1] > score[2]) {
+//     return winner;
+//   } else if (score[winner[0]-1] === score[2]) {
+//     return[...winner, 3];
+//   } else {
+//     return [3];
+//   };
+// }
 
 test('1번이 일등일때', () => {
   expect(solution([1,2,3,4,5])).toEqual([1]);
