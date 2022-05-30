@@ -76,12 +76,8 @@ const solution = (n, lost, reserve) => {
       } 
     }
   }
-
-  if (newLost.length === 0) {
-    return n;
-  } else {
-    return n - newLost.length;
-  }
+  
+  return (newLost.length === 0) ? n : n - newLost.length;
 };
 
 test('체육수업에 참가할 학생 수 ', () => {
