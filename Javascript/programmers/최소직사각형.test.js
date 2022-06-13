@@ -24,10 +24,18 @@ const solution = (sizes) => {
     return (it[0] < it[1]) ? [it[1], it[0]] : it;
   });
 
-  const width = Math.max(...square.map((it) => it[0]));
-  const height = Math.max(...square.map((it) => it[1]));
+  // const width = Math.max(...square.map((it) => it[0]));
+  // const height = Math.max(...square.map((it) => it[1]));
 
-  return width * height;
+  // return width * height;
+
+  const maxSquare = square.reduce((acc, cur) => {
+    const width = acc[0] < cur[0] ? cur[0] : acc[0];
+    const height = acc[1] < cur[1] ? cur[1] : acc[1];
+    return [width, height];
+  }, [0, 0]);
+
+  return maxSquare[0] * maxSquare[1];
 };
 
 test('최소직사각형', () => {
