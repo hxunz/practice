@@ -5,20 +5,29 @@
 // 이 값을 리턴한다.
 
 const solution = (sizes) => {
-  let width = [];
-  let height = [];
+  // let width = [];
+  // let height = [];
 
-  for (i = 0; i < sizes.length; i++) {
-    if (sizes[i][0] < sizes[i][1]) {
-      width = [...width, sizes[i][1]]
-      height = [...height, sizes[i][0]]
-    } else {
-      width = [...width, sizes[i][0]]
-      height = [...height, sizes[i][1]]
-    }
-  };
+  // for (i = 0; i < sizes.length; i++) {
+  //   if (sizes[i][0] < sizes[i][1]) {
+  //     width = [...width, sizes[i][1]]
+  //     height = [...height, sizes[i][0]]
+  //   } else {
+  //     width = [...width, sizes[i][0]]
+  //     height = [...height, sizes[i][1]]
+  //   }
+  // };
 
-  return width.sort((a,b) => b-a)[0] * height.sort((a,b) => b-a)[0]
+  // return width.sort((a,b) => b-a)[0] * height.sort((a,b) => b-a)[0]
+
+  const square = sizes.map((it) => {
+    return (it[0] < it[1]) ? [it[1], it[0]] : it;
+  });
+
+  const width = Math.max(...square.map((it) => it[0]));
+  const height = Math.max(...square.map((it) => it[1]));
+
+  return width * height;
 };
 
 test('최소직사각형', () => {
