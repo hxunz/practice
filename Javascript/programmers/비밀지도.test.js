@@ -7,14 +7,11 @@ const solution = (n, arr1, arr2) => {
   const binary1 = arr1.map(it => parseInt(it.toString(2)));
   const binary2 = arr2.map(it => parseInt(it.toString(2)));
 
-  let newArr = [];
-  for (i = 0; i < n; i++) {
-    newArr = [...newArr, binary1[i] + binary2[i]];
-  }
+  const joinBinary = binary1.map((it, index) => it + binary2[index]);
 
-  const numberArr = newArr.map(it => it.toString().split(''));
+  const treasureMap = joinBinary.map(it => it.toString().split(''));
 
-  return numberArr.map((it) => {
+  return treasureMap.map((it) => {
     return it.map(num => num === '0' ? ' ' : '#').join('').padStart(n, ' ');
   });
 }
