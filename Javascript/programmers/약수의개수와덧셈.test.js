@@ -19,7 +19,7 @@ const solution = (left, right) => {
 const getSubMultipleCount = (number) => {
   let submultiple = [];
   for (i = 1; i <= number; i++) {
-    if (number % i == 0) {
+    if (number % i === 0) {
       submultiple.push(i);
     }
   }
