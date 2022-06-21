@@ -12,7 +12,7 @@ const solution = (left, right) => {
   }
 
   return numbers.reduce((acc, cur) => {
-    return getSubMultipleCount(cur) % 2 == 0 ? acc + cur : acc - cur
+    return getSubMultipleCount(cur) % 2 === 0 ? acc + cur : acc - cur
   }, 0);
 };
 
