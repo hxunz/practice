@@ -8,4 +8,4 @@ const solution = (s) => {
 test('findMiddleWord', () => {
   expect(solution('abc')).toBe('b');
   expect(solution('abcd')).toBe('bc');
-})
+});
