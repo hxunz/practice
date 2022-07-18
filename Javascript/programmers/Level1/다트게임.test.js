@@ -5,73 +5,41 @@
 // 근데 #을 만나면 # 바로 앞의 요소에 -1을 곱한다.
 // 그리고 이렇게 더한 값들을 리턴해준다.
 
-// const getResult = (acc, dartArr) => {
-//   const maxLength = dartArr.length;
-//   if (dartArr[i+1] === '*') {
-//     acc *= 2;
-//     if (i + 4 < maxLength && dartArr[i+4] === '*') {
-//       acc *= 2;
-//       if (i + 7 < maxLength && dartArr[i+7] === '*') {
-//         acc *= 2;
-//       }
-//     } 
-//   } else if (i + 3 < maxLength && dartArr[i + 3] === '*') {
-//     acc *= 2;
-//       if (i + 7 < maxLength && dartArr[i+7] === '*') {
-//         acc *= 2;
-//       }
-//   } else if (i + 5 < maxLength && dartArr[i+5] === '*') {
-//     acc *= 2;
-//   } 
-//   return acc;
-// }``
-
 const solution = (dartResult) => {
-  const dartArr = [...dartResult];
-  console.log('dartArr::: ', dartArr);
-  // const dartStrings = dartResult.replace(/\d/g, '');
-  // console.log('dartStrings::: ', dartStrings);
-  // ['1', 'S', '2', 'D', '3', 'T', '*']
-  let dart = [];
-  const dartArrLength = dartArr.length;
-  for (i = 1; i < dartArrLength; i++) {
-    if (dartArr[i] === 'S') {
-      let result = Number(dartArr[i - 1]);
-      // if (dartArr[i+1] === '*') {
-      //   result *= 2;
-      //   if (i + 4 < dartArrLength && dartArr[i+4] === '*') {
-      //     result *= 2;
-      //     if (i + 7 < dartArrLength && dartArr[i+7] === '*') {
-      //       result *= 2;
-      //     }
-      //   } 
-      // }
-      // dart.push(getResult(result, dartArr));
+  let dartArr = [];
+  let dartNumbers = [];
 
-      dart.push(result);
-    } 
-    if (dartArr[i] === 'D') {
-      let result = Math.pow(dartArr[i-1], 2);
-      // if (dartArr[i+1] === '*') {
-      //   result *= 2;
-      //   if (i + 4 < dartArrLength && dartArr[i+4] === '*') {
-
-      //   }
-      // }
-      dart.push(result);
-      // dart.push(getResult(result, dartArr));
-    }
-    if (dartArr[i] === 'T') {
-      dart.push(Math.pow(dartArr[i-1],3));
-      // dart.push(getResult(Math.pow(dartArr[i-1], 3), dartArr));
+  for (let i = 0; i < dartResult.length; i++) {
+    if (dartResult[i] == 1 && dartResult[i + 1] == 0) {
+      dartArr.push(10);
+      i++;
+    } else {
+      dartArr.push(dartResult[i]);
     }
   }
-  console.log('dart::: ', dart);
-}
+  console.log('dartArr::: ', dartArr);
+
+  for (i = 1; i < dartArr.length; i++) {
+    if (dartArr[i] === 'S') {
+      dartNumbers.push(Number(dartArr[i - 1]));
+    } else if (dartArr[i] === 'D') {
+      dartNumbers.push(Math.pow(dartArr[i - 1], 2));
+    } else if (dartArr[i] === 'T') {
+      dartNumbers.push(Math.pow(dartArr[i - 1], 3));
+    } else if (dartResult[i] === "#") {
+      dartNumbers[dartNumbers.length - 1] *= -1;
+    } else if (dartResult[i] === "*") {
+      dartNumbers[dartNumbers.length - 1] *= 2;
+      dartNumbers[dartNumbers.length - 2] *= 2;
+    }
+  }
+  console.log('dartNumbers::: ', dartNumbers);
+
+  return dartNumbers.reduce((acc, cur) => acc + cur, 0);
+};
 
 test('dart', () => {
-  expect(solution('1S*2D3T')).toEqual(33);
-  expect(solution('1S2D3T*')).toEqual(64);
-  expect(solution('1S*2D*3T')).toEqual(37);
-  expect(solution('1S*2D3T*')).toEqual(37);
+  expect(solution('1S2D*3T')).toEqual(37);
+  expect(solution('1D2S#10S')).toEqual(9);
+  expect(solution('1D2S0T')).toEqual(3);
 });
