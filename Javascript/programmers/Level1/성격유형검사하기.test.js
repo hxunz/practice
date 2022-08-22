@@ -11,81 +11,24 @@ const solution = (survey, choices) => {
   };
 
   for (i = 0; i < survey.length; i++) {
-    const left = survey[i][0];
-    const right = survey[i][1];
+    const [left, right] = survey[i];
 
-    if (choices[i] === 1) {
-      category[left] = category[left] + 3
-    } else if (choices[i] === 2) {
-      category[left] = category[left] + 2
-    } else if (choices[i] === 3) {
-      category[left] = category[left] + 1
-    } else if (choices[i] === 5) {
-      category[right] = category[right] + 1
-    } else if (choices[i] === 6) {
-      category[right] = category[right] + 2
-    } else if (choices[i] === 7) {
-      category[right] = category[right] + 3
+    if (choices[i] >= 5) {
+      category[right] = category[right] + (choices[i] - 4);
+    } else {
+      category[left] = category[left] + (4 - choices[i]);
     }
   }
 
+  const r = [
+    ['R', 'T'],
+    ['C', 'F'],
+    ['J', 'M'],
+    ['A', 'N'],
+  ];
 
-  let result = [];
-
-  if (category['R'] > category['T'] === true || category['R'] === category['T']) {
-    result.push('R')
-  } else {
-    result.push('T')
-  }
-
-  if (category['C'] > category['F'] === true || category['C'] === category['F']) {
-    result.push('C')
-  } else {
-    result.push('F')
-  }
-
-  if (category['J'] > category['M'] === true || category['J'] === category['M']) {
-    result.push('J')
-  } else {
-    result.push('M')
-  }
-
-  if (category['A'] > category['N'] === true || category['A'] === category['N']) {
-    result.push('A')
-  } else {
-    result.push('N')
-  }
-
-  return result.join('');
+  return r.map(([left, right]) => category[left] >= category[right] ? left : right).join('');
 }
-
-// for (i = 0; i < Object.keys(category).length; i++) {
-
-// }
-// const user = {
-//   name: 'yunseok',
-//   age: 32,
-//   address: 'hanam',
-//   money: 10000,
-//   house: '아파트',
-// }
-
-// const name = user.name;
-// const age = user.age;
-// const address = user.address;
-// const money = user.money;
-// const house = user.house;
-
-// <VideoPlay element={'string'} />
-
-// function VideoPlay({ element }) {
-//   return (
-//     <div>
-//       element={element}
-//     </div>
-//   )
-// }
-
 
 
 test('surveyResult', () => {
