@@ -32,33 +32,25 @@ const solution = (survey, choices) => {
 
   let result = [];
 
-  if (category['R'] > category['T'] === true) {
-    result.push('R')
-  } else if (category['R'] === category['T']) {
+  if (category['R'] > category['T'] === true || category['R'] === category['T']) {
     result.push('R')
   } else {
     result.push('T')
   }
 
-  if (category['C'] > category['F'] === true) {
-    result.push('C')
-  } else if (category['C'] === category['F']) {
+  if (category['C'] > category['F'] === true || category['C'] === category['F']) {
     result.push('C')
   } else {
     result.push('F')
   }
 
-  if (category['J'] > category['M'] === true) {
-    result.push('J')
-  } else if (category['J'] === category['M']) {
+  if (category['J'] > category['M'] === true || category['J'] === category['M']) {
     result.push('J')
   } else {
     result.push('M')
   }
 
-  if (category['A'] > category['N'] === true) {
-    result.push('A')
-  } else if (category['A'] === category['N']) {
+  if (category['A'] > category['N'] === true || category['A'] === category['N']) {
     result.push('A')
   } else {
     result.push('N')
