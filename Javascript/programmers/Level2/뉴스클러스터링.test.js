@@ -27,23 +27,19 @@ const solution = (str1, str2) => {
     return 65536;
   }
 
-  // 이 두 배열의 교집합을 구한다.
+  // 이 두 배열의 교집합과 합집합을 구한다.
   let intersection = 0;
+  let union = 0;
   const set = [...new Set([...newArr1, ...newArr2])];
   set.forEach((it) => {
     const arr1 = newArr1.filter(e => e === it).length;
     const arr2 = newArr2.filter(e => e === it).length;
     intersection += Math.min(arr1, arr2);
+    union += Math.max(arr1, arr2);
   })
-  // const intersection = 
-  // const intersection = newArr1.filter(it => newArr2.includes(it));
-
-  // 이 두 배열의 합집합
-  const union = newArr1.length + newArr2.length - intersection;
 
   // 나누고 65536 곱하고 소수점 버려서 리턴 
   const result = Math.floor((intersection / union) * 65536);
-  // console.log('result::: ', result);
   return result;
 };
 
