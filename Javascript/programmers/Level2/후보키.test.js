@@ -10,11 +10,11 @@ const isUnique = (rows, columns) => {
 
     map[r[i]] = true;
   }
-  
+
   return true;
 };
 
-const getCombinations = function (arr, selectNumber) {
+const getCombinations = (arr, selectNumber) => {
   const results = [];
   if (selectNumber === 1) return arr.map(el => [el]);
 
@@ -28,11 +28,11 @@ const getCombinations = function (arr, selectNumber) {
   return results;
 };
 
-const getAllKeys = (columsCount) => {
+const getAllKeys = (columnsCount) => {
   const r = [];
 
-  const arr = Array.from({ length: columsCount }, (_, index) => index);
-  for (let i = 0; i < columsCount; i++) {
+  const arr = Array.from({ length: columnsCount }, (_, index) => index);
+  for (let i = 0; i < columnsCount; i++) {
     r.push(getCombinations(arr, i + 1));
   }
 
