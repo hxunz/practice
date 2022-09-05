@@ -10,7 +10,6 @@ const isUnique = (rows, columns) => {
 
     map[r[i]] = true;
   }
-
   return true;
 };
 
