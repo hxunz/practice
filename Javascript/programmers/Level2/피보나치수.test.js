@@ -1,12 +1,4 @@
-const fibonacci = (n, memo = {}) => {
-  // if (n === 0 || n === 1) {
-  //   return n;
-  // }
-  // if (!memo[n]) {
-  //   memo[n] = fibonacci(n - 2, memo) + fibonacci(n - 1, memo);
-  // }
-
-  // return memo[n] % 1234567;
+const fibonacci = (n) => {
   let numbers = [0, 1];
   for (i = 2; i <= n; i++) {
     numbers.push((numbers[i - 1] % 1234567) + (numbers[i - 2] % 1234567) % 1234567);
