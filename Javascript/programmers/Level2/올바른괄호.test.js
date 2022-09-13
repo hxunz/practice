@@ -1,8 +1,9 @@
 const solution = (s) => {
+  const str = s.replace(/[^()]/gi, '');
   // s의(개수와)개수가 같다면 true
   let count = 0;
-  for (i = 0; i < s.length; i++) {
-    if (s[i] === '(') {
+  for (i = 0; i < str.length; i++) {
+    if (str[i] === '(') {
       count++
     } else {
       count--
@@ -16,8 +17,9 @@ const solution = (s) => {
 }
 
 test('trueOrFalse', () => {
-  expect(solution("()()")).toEqual(true);
-  expect(solution(")()(")).toEqual(false);
-  expect(solution('())())')).toEqual(false);
-  expect(solution("())()(()")).toEqual(false);
+  expect(solution("()a()")).toEqual(true);
+  // expect(solution("()()")).toEqual(true);
+  // expect(solution(")()(")).toEqual(false);
+  // expect(solution('())())')).toEqual(false);
+  // expect(solution("())()(()")).toEqual(false);
 });
