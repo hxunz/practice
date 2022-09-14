@@ -1,17 +1,30 @@
+// const solution = (s) => {
+//   // 0이 연속중인 경우와 1이 연속중인 경우 각각 카운트를한다.
+//   let zeroCount = 0;
+//   let oneCount = 0;
+//   for (i = 0; i < s.length; i++) {
+//     if (s[i] === '0' && s[i + 1] !== '0') {
+//       zeroCount += 1;
+//     }
+//     if (s[i] === '1' && s[i + 1] !== '1') {
+//       oneCount += 1;
+//     }
+//   }
+//   // 카운트가 더 적은 숫자의 카운트 값을 리턴한다.
+//   return zeroCount > oneCount ? oneCount : zeroCount
+// }
+
+
+// const solution = (s) => {
+//   const zero = s.split('1').filter((it) => it !== '').length;
+//   const one = s.split('0').filter((it) => it !== '').length;
+//   return Math.min(zero, one)
+// }
+
 const solution = (s) => {
-  // 0이 연속중인 경우와 1이 연속중인 경우 각각 카운트를한다.
-  let zeroCount = 0;
-  let oneCount = 0;
-  for (i = 0; i < s.length; i++) {
-    if (s[i] === '0' && s[i + 1] !== '0') {
-      zeroCount += 1;
-    }
-    if (s[i] === '1' && s[i + 1] !== '1') {
-      oneCount += 1;
-    }
-  }
-  // 카운트가 더 적은 숫자의 카운트 값을 리턴한다.
-  return zeroCount > oneCount ? oneCount : zeroCount
+  const zero = s.replace(/[1]/g, ' ').split(' ').filter((it) => it !== '').length;
+  const one = s.replace(/[0]/g, ' ').split(' ').filter((it) => it !== '').length;
+  return Math.min(zero, one)
 }
 
 test('reverse', () => {
