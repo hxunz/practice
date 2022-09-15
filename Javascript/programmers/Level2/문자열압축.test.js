@@ -49,16 +49,16 @@ const solution = (s) => {
     let unit = i + 1;
     let splitWord = '';
     let count = 1;
-    for (j = 0; j < s.length; j = j + unit){
+    for (j = 0; j < s.length; j = j + unit) {
       let currWord = s.substring(j, j + unit);
       let nextWord = s.substring(j + unit, j + unit + unit);
       if (currWord === nextWord) {
         count++;
       } else {
         if (count === 1) {
-          splitWord = splitWord + currWord;
+          splitWord += currWord;
         } else {
-          splitWord = splitWord + count + currWord;
+          splitWord += count + currWord;
         }
         count = 1;
       }
@@ -72,6 +72,7 @@ const solution = (s) => {
 
 test('문자열압축', () => {
   expect(solution("aabb")).toBe(4);
+  expect(solution("aabbaccc")).toBe(7);
 })
 
 
