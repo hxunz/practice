@@ -36,5 +36,3 @@ function solution(id_list, report, k) {
 
   return mailCounts;
 }
-
-module.exports = solution;
