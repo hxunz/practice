@@ -17,7 +17,7 @@ const solution = (s) => {
 
   const lowerCase = s.toLowerCase();
   const strArr = lowerCase.split(' ');
-  const upperCase = strArr.map((it) => it.replace(/^[a-z]/, char => char.toUpperCase()));
+  const upperCase = strArr.map((it) => it.replace(/^[a-z]/, str => str.toUpperCase()));
   const result = upperCase.join(' ');
   return result;
 }
