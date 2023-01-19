@@ -5,7 +5,7 @@ const solution = (a, b, n, number = 0) => {
     return number
   }
 
-  return solution(a, b, n = n - (count * a) + count * b, number += count * b)
+  return solution(a, b, n - (count * a) + count * b, number + count * b)
 };
 
 test('solution', () => {
