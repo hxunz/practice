@@ -1,4 +1,4 @@
-const speak = ['aya', 'ye', 'woo', 'ma'];
+const speak = ['ayaaya', 'yeye', 'woowoo', 'mama'];
 
 const solution = (babbling) => {
   // //aya, ye, woo, ma 같은 단어가 연속으로 사용되었는지 아닌지 확인하는 정규 표현식
@@ -13,26 +13,23 @@ const solution = (babbling) => {
   // }
 
   // return count;
-  // let count = 0;
+  let count = 0;
 
-  // while (babbling.length) {
-  //   let word = babbling.shift();
+  while (babbling.length) {
+    let word = babbling.shift();
 
-  //   //연속되는 발음은 카운트 안하고 지나감
-  //   console.log('::: ', speak.some((it) => word.includes(it)));
-  //   if (speak.some((it) => word.includes(it))) continue;
+    //연속되는 발음은 카운트 안하고 지나감
+    if (speak.some((it) => word.includes(it))) continue;
 
-  //   //단어에서 가능한 발음을 공백으로 바꾼다.
-  //   word = word.replace(/^(aya|ye|woo|ma)/, '');
-  //   // console.log('word::: ', word);
+    //단어에서 가능한 발음을 공백으로 바꾼다.
+    word = word.replace(/(aya|ye|woo|ma)/g, '');
 
-  //   //모두 발음 가능한 단어면 count++
-  //   if (word.length === 0) count++
-  // }
-  // console.log('count::: ', count);
-  // return count
+    //모두 발음 가능한 단어면 count++
+    if (word.length === 0) count++
+  }
+  return count
 
-  return babbling.map((it) => it.replace(/aya(?!aya)|ye(?!ye)|woo(?!woo)|ma(?!ma)/g, '')).filter((it) => it === '').length;
+  // return babbling.map((it) => it.replace(/aya(?!aya)|ye(?!ye)|woo(?!woo)|ma(?!ma)/g, '')).filter((it) => it === '').length;
 };
 
 test('solution', () => {
