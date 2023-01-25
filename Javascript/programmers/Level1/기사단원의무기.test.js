@@ -15,46 +15,46 @@ const solution = (number, limit, power) => {
   return weight.reduce((acc, cur) => acc + cur, 0);
 };
 
-// const getSubMultiple = (number) => {
-//   let submultipleCount = [];
+const getSubMultiple = (number) => {
+  let submultipleCount = [];
 
-//   while (number >= 0) {
-//     let submultiple = [];
+  while (number >= 0) {
+    let submultiple = [];
 
-//     for (i = 1; i <= Math.sqrt(number); i++) {
-//       if (number % i === 0) {
-//         submultiple.push(i);
-//         if (number / i !== i) {
-//           submultiple.push(number / i)
-//         }
-//       }
-//     }
-//     submultipleCount.push(submultiple.length);
-//     number -= 1;
-//   }
-
-//   return submultipleCount;
-// }
-
-const getSubMultiple = (number, submultipleCount = []) => {
-  let submultiple = [];
-
-  if (number === 0) {
-    return submultipleCount
-  };
-
-  for (i = 1; i <= Math.sqrt(number); i++) {
-    if (number % i === 0) {
-      submultiple.push(i);
-      if (number / i !== i) {
-        submultiple.push(number / i)
+    for (i = 1; i <= Math.sqrt(number); i++) {
+      if (number % i === 0) {
+        submultiple.push(i);
+        if (number / i !== i) {
+          submultiple.push(number / i)
+        }
       }
     }
+    submultipleCount.push(submultiple.length);
+    number -= 1;
   }
-  submultipleCount.push(submultiple.length)
 
-  return getSubMultiple(number -= 1, submultipleCount);
-};
+  return submultipleCount;
+}
+
+// const getSubMultiple = (number, submultipleCount = []) => {
+//   let submultiple = [];
+
+//   if (number === 0) {
+//     return submultipleCount
+//   };
+
+//   for (i = 1; i <= Math.sqrt(number); i++) {
+//     if (number % i === 0) {
+//       submultiple.push(i);
+//       if (number / i !== i) {
+//         submultiple.push(number / i)
+//       }
+//     }
+//   }
+//   submultipleCount.push(submultiple.length)
+
+//   return getSubMultiple(number -= 1, submultipleCount);
+// };
 
 
 test('solution', () => {
