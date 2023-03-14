@@ -30,34 +30,39 @@
 *
 */
 
-const solution = (keyinput, board) => {
-  let route = [0, 0];
-  const [maxLeft, maxRight, maxUp, maxDown] = [-((board[0] - 1) / 2), (board[0] - 1) / 2, (board[1] - 1) / 2, -((board[1] - 1) / 2)];
+const movement = {
+  left: ([x, y]) => [x - 1, y],
+  right: ([x, y]) => [x + 1, y],
+  up: ([x, y]) => [x, y + 1],
+  down: ([x, y]) => [x, y - 1],
+}
 
-  for (let i = 0; i < keyinput.length; i++) {
-    if (keyinput[i] === 'left') {
-      if (maxLeft <= route[0] - 1) {
-        route[0] = route[0] - 1
-      }
-    } else if (keyinput[i] === 'right') {
-      if (maxRight >= route[0] + 1) {
-        route[0] = route[0] + 1
-      }
-    } else if (keyinput[i] === 'up') {
-      if (maxUp >= route[1] + 1) {
-        route[1] = route[1] + 1
-      }
-    } else if (keyinput[i] === 'down') {
-      if (maxDown <= route[1] - 1) {
-        route[1] = route[1] - 1
-      }
-    }
+const move = (route, command, [maxLeft, maxRight, maxUp, maxDown]) => {
+  const next = movement[command](route);
+  if (maxLeft <= next[0] && maxRight >= next[0] && maxUp >= next[1] && maxDown <= next[1]) {
+    return next;
   }
 
-  return route
+  return route;
+}
+
+const solution = (keyinput, [width, height]) => {
+  const [maxLeft, maxRight, maxUp, maxDown] = [-((width - 1) / 2), (width - 1) / 2, (height - 1) / 2, -((height - 1) / 2)];
+
+  // [0, 0] left -> [-1, 0]
+  // [-1, 0] down [-1, -1]
+  return keyinput.reduce((position, command) => {
+    return move(position, command, [maxLeft, maxRight, maxUp, maxDown])
+  }, [0, 0])
 };
 
+test('move', () => {
+  expect(
+    move([-4, 0], 'left', [-4, 4, 4, -4])
+  ).toEqual([-4, 0]);
+})
+
 test('solution', () => {
-  // expect(solution(["left", "right", "up", "right", "right"], [11, 11])).toEqual([2, 1]);
+  expect(solution(["left", "right", "up", "right", "right"], [11, 11])).toEqual([2, 1]);
   expect(solution(["down", "down", "down", "down", "down"], [7, 9])).toEqual([0, -4]);
 });
