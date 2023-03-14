@@ -44,11 +44,9 @@ const solution = (wallpaper) => {
       columnIndex.push(wallpaper[i].lastIndexOf('#'))
     }
   }
-  rowIndex.sort((a, b) => a - b);
-  columnIndex.sort((a, b) => a - b);
 
-  const start = [rowIndex[0], columnIndex[0]];
-  const end = [rowIndex[rowIndex.length - 1] + 1, columnIndex[columnIndex.length - 1] + 1];
+  const start = [Math.min(...rowIndex), Math.min(...columnIndex)];
+  const end = [Math.max(...rowIndex) + 1, Math.max(...columnIndex) + 1];
 
   return start.concat(end);
 }
